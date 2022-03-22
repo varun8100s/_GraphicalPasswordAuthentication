@@ -8,29 +8,32 @@ body {
 }
 
 input {
+  margin-top:60px;
+  margin-right: 90px;
   height: 30px;
   text-indent: 10px;
   border: 1px solid #444;
-  border-radius: 5px;
-  display: block;
+  border-radius: 50px;
+  display: inline;
+  float: right;
 }
 
 .img-container {
-  padding: 12vh 12vh 12vh 12vh;
-  height: 60vh;
+  padding: 5vh;
+  height: 100vh;
   width: 100vh;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 2fr);
   column-gap: 30px;
   row-gap: 30px;
-  aspect-ratio: 1;
+  /* aspect-ratio: 1; */
 }
 
 .img-button {
   box-shadow: 5px 5px 10px rgb(165, 165, 165);
   border-radius: 25px;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 10px; 
   border-color: transparent;
   width: 130px;
   height: 130px;
@@ -46,6 +49,6 @@ body {
 
 .image {
   border-radius: 15px;
-  object-fit: cover;
+  /* object-fit: cover; */
 
 }

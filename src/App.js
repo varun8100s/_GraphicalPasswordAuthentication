@@ -4,7 +4,7 @@ import './App.css';
 import { type } from '@testing-library/user-event/dist/type';
 
 function App() {
-  const [gridSize, setGridSize] = React.useState(3);
+  const [gridSize, setGridSize] = React.useState(4);
   // console.log("grid:"+gridSize)
 
   function handleChange(event) {
@@ -14,7 +14,7 @@ function App() {
   }
 
   return (
-    <div className="form-group mx-auto">
+    <div >
 
       <input
         type="text"
@@ -23,6 +23,7 @@ function App() {
         name="lastName"
         value={gridSize}
       />
+
       <Grid size={gridSize} />
     </div>
   );

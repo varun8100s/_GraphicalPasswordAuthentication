@@ -3,25 +3,38 @@ import Tile from './Tile';
 
 export default function Grid(props){
 
-    let gridElement = [];
+    console.log(`props.size: ${props.size}`)
+    // const [gridState, setGridState] = React.useState({
+    //     "size"=3,
 
-    if(props.size>6 || props.size< 3){   
-        gridElement = <h1>
-            Grid can have a max of 6 tiles and a minimum of 3.
-        </h1>
-    }
-    else 
+    // })
+
+    let gridMax = 9, gridMin = 3;
+    let gridElement = [];
+    let gridIsValid = props.size <= gridMax && props.size >= gridMin;
+
+    
+    for(let i =1; i<=props.size*props.size; i++)
     {
-        for(let i =1; i<=props.size*props.size; i++)
-        {
-            gridElement.push(<Tile/>)
-        }
+        gridElement.push(<Tile/>)
     }
-   
+    // document.getElementsByClassName('img-container').style.gridTemplateColumns = `repeat(${props.size},1fr)`
+    
+    console.log(gridElement);
 
     return(
-        <div className='img-container'>
-            {gridElement}
-        </div>
+
+        <>
+            {
+                gridIsValid?
+                <div className='img-container'>
+                    {gridElement}
+                </div>
+                :
+                <h1 >Grid can be a minimum of {gridMin} and a max of {gridMax}</h1>
+             
+            }
+        </>
+
     );
 }
