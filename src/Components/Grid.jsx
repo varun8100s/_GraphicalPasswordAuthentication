@@ -1,29 +1,25 @@
 import React from 'react';
-import Tile from './Tile';
+import Tile from './Tile'
 
 export default function Grid(props){
 
-    console.log(`props.size: ${props.size}`)
-    // const [gridState, setGridState] = React.useState({
-    //     "size"=3,
-
-    // })
-
-    let gridMax = 9, gridMin = 3;
+    let gridMax = 8, gridMin = 3, rows = 4, cols = props.size;
     let gridElement = [];
     let gridIsValid = props.size <= gridMax && props.size >= gridMin;
 
-    
-    for(let i =1; i<=props.size*props.size; i++)
-    {
-        gridElement.push(<Tile/>)
+    //currently, rows is fixed to 4 to avoid the grid from appearing incomplete
+    //need some alternative way to make the grid look complete
+    for(let j =1; j<=rows;j++)
+    {    
+        for(let i =1; i<=cols; i++)
+        {
+            gridElement.push(<Tile/>)
+        }
+        gridElement.push(<br/>)//for demarcating rows
     }
-    // document.getElementsByClassName('img-container').style.gridTemplateColumns = `repeat(${props.size},1fr)`
     
-    console.log(gridElement);
 
     return(
-
         <>
             {
                 gridIsValid?
