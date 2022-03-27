@@ -1,27 +1,49 @@
 import React from 'react';
-import Tile from './Tile';
+
+function Tile(){
+
+    let query = "dog";
+    let imgPath = "https://source.unsplash.com/100x100/?"+query;
+    return(
+            <img src={imgPath} className='image' onClick={()=>console.log('1')}/>
+    );  
+
+}
 
 export default function Grid(props){
 
-    let gridElement = [];
+    console.log(`props.size: ${props.size}`)
 
-    if(props.size>6 || props.size< 3){   
-        gridElement = <h1>
-            Grid can have a max of 6 tiles and a minimum of 3.
-        </h1>
-    }
-    else 
-    {
-        for(let i =1; i<=props.size*props.size; i++)
+
+    let gridMax = 8, gridMin = 3;
+    let gridElement = [];
+    let gridIsValid = props.size <= gridMax && props.size >= gridMin;
+
+    for(let j =1; j<=4;j++)
+    {    
+        for(let i =1; i<=props.size; i++)
         {
             gridElement.push(<Tile/>)
         }
+        gridElement.push(<br/>)
     }
-   
+    
+    console.log(gridElement);
 
     return(
-        <div className='img-container'>
-            {gridElement}
-        </div>
+
+        <>
+            {
+                gridIsValid?
+                <div className='img-container'>
+                    
+                    {gridElement}
+                </div>
+                :
+                <h1 >Grid can be a minimum of {gridMin} and a max of {gridMax}</h1>
+             
+            }
+        </>
+
     );
 }
