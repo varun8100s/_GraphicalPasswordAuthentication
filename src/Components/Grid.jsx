@@ -1,42 +1,29 @@
 import React from 'react';
-
-function Tile(){
-
-    let query = "dog";
-    let imgPath = "https://source.unsplash.com/100x100/?"+query;
-    return(
-            <img src={imgPath} className='image' onClick={()=>console.log('1')}/>
-    );  
-
-}
+import Tile from './Tile'
 
 export default function Grid(props){
 
-    console.log(`props.size: ${props.size}`)
-
-
-    let gridMax = 8, gridMin = 3;
+    let gridMax = 8, gridMin = 3, rows = 4, cols = props.size;
     let gridElement = [];
     let gridIsValid = props.size <= gridMax && props.size >= gridMin;
 
-    for(let j =1; j<=4;j++)
+    //currently, rows is fixed to 4 to avoid the grid from appearing incomplete
+    //need some alternative way to make the grid look complete
+    for(let j =1; j<=rows;j++)
     {    
-        for(let i =1; i<=props.size; i++)
+        for(let i =1; i<=cols; i++)
         {
             gridElement.push(<Tile/>)
         }
-        gridElement.push(<br/>)
+        gridElement.push(<br/>)//for demarcating rows
     }
     
-    console.log(gridElement);
 
     return(
-
         <>
             {
                 gridIsValid?
                 <div className='img-container'>
-                    
                     {gridElement}
                 </div>
                 :

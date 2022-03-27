@@ -6,7 +6,7 @@ body {
 }
 
 .input {
-
+  /* temporary, to be changed to range slider later */
   margin-left:3vw;
   margin-bottom: 5px;
   height: 4vh;

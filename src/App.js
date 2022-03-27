@@ -5,21 +5,19 @@ import { type } from '@testing-library/user-event/dist/type';
 
 function App() {
   const [gridSize, setGridSize] = React.useState(4);
-  // console.log("grid:"+gridSize)
   
-  function handleChange(event) {
-    console.log("gridmax"+Grid.gridMax)
-    // console.log(gridSize,Number.isInteger(gridSize))
-    const {value} = event.target;
-    setGridSize(value);
-  }
 
   return (
     <div >
       <input
         type="text"
         placeholder="Grid-Size"
-        onChange={handleChange}
+        onChange={
+          (event)=>{
+            const {value} = event.target;
+            setGridSize(value);
+          }
+        }
         value={gridSize}
         className="input"
       />  
