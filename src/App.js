@@ -1,33 +1,23 @@
-import React from 'react';
-import Grid from './Components/Grid';
-import './App.css';
-import { type } from '@testing-library/user-event/dist/type';
+import React from "react";
+import Grid from "./Components/Grid";
+import "./App.css";
+import Login from "./Screens/login";
+import { UserContext } from "./Context/UserContext";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function App() {
-  const [gridSize, setGridSize] = React.useState(4);
-  
-
+  const [UserInfo, setUserInfo] = useState({});
+  useEffect(() => {
+    //Incase user had logged and left webiste withoit logging out
+    if (localStorage.getItem("Userinfo")) {
+      setUserInfo(JSON.parse(localStorage.getItem("Userinfo")));
+    }
+  }, []);
   return (
-    <div >
-      <input
-        type="text"
-        placeholder="Grid-Size"
-        onChange={
-          (event)=>{
-            const {value} = event.target;
-            setGridSize(value);
-          }
-        }
-        value={gridSize}
-        className="input"
-      />  
-        {/* change input to range slider later */}
-
-
-    <Grid size={gridSize} />
-    
-
-    </div>
+    <UserContext.Provider value={{ UserInfo, setUserInfo }}>
+      <Login />
+    </UserContext.Provider>
   );
 }
 
